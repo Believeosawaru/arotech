@@ -1,0 +1,51 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{font-family:Manrope,sans-serif;color:#101B16;background:#F6F8F3;font-synthesis:none}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}::selection{background:#c3f26a;color:#101b16}a{text-decoration:none}h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}button:disabled{cursor:not-allowed}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#c6d5bf;border-radius:99px}
+@layer components{.eyebrow{@apply inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.24em] text-[#497e40]}.input-field{@apply mt-2 block w-full rounded-2xl border border-[#e1e8df] bg-[#f8faf7] px-4 py-3.5 text-sm font-semibold text-ink outline-none transition focus:border-[#8ab95d] focus:bg-white focus:ring-2 focus:ring-[#c3f26a55] placeholder:text-[#9aa59a]}.app-h1{@apply font-display text-3xl sm:text-[38px] font-bold tracking-[-.06em]}.card-sub{@apply text-sm font-medium leading-7 text-sage}.glass{@apply border border-white/20 bg-white/10 backdrop-blur-xl}}
+.hero-grid{background-image:linear-gradient(to right,rgba(205,234,188,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(205,234,188,.12) 1px,transparent 1px);background-size:65px 65px;mask-image:linear-gradient(to right,transparent,black 30%,black 75%,transparent)}
+@keyframes hoverfloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(-6deg)}}.float-card{animation:hoverfloat 6s ease-in-out infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}.ticker-track{animation:ticker 30s linear infinite}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Customer workspace theme toggle. Surfaces and control hierarchy preserve readability. */
+.app-dark{background:#0b1710!important;color:#eaf6e8!important}
+.app-dark header,.app-dark aside{background:#14251b!important;border-color:#2a3d30!important}
+.app-dark main section,.app-dark [class*="bg-white"]{background:#182c20!important;border-color:#2c4735!important}
+.app-dark [class*="bg-[#f1f6ec]"],.app-dark [class*="bg-[#e9f5dc]"],.app-dark [class*="bg-mist"]{background:#274330!important}
+.app-dark [class*="text-ink"]{color:#eaf6e8!important}
+.app-dark [class*="text-sage"],.app-dark .card-sub{color:#a8c0af!important}
+.app-dark input,.app-dark textarea,.app-dark select{background:#14261a!important;color:#f5fbf1!important;border-color:#3d5744!important}
+.app-dark main section.bg-ink{background:#101b16!important}
+.app-dark button.bg-ink{background:#c3f26a!important;color:#101b16!important}
+.app-dark main section .bg-lime{color:#101b16!important}
+
+
+/* Arotech mobile layout and accessible theme-control refinements. */
+html,body,#root{min-width:0;width:100%}
+body{overflow-x:clip}
+#root{min-width:0;overflow-x:clip}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+:where(.app-dark) .theme-toggle{
+  color:#c3f26a!important;
+  background-color:#304e38!important;
+  border:1px solid #729763!important;
+  box-shadow:0 0 0 1px rgba(195,242,106,.09) inset;
+}
+:where(.app-dark) .theme-toggle:hover{
+  color:#e5ffb4!important;background-color:#426347!important;border-color:#a8d878!important;
+}
+:where(.app-dark) .theme-toggle:focus-visible{outline:2px solid #c3f26a;outline-offset:3px}
+.app-dark header a[aria-label="Notifications"]{color:#c3f26a!important}
+.app-dark button.bg-lime,.app-dark a.bg-lime{color:#101b16!important}
+.app-dark .app-mobile-nav{background:#14251b!important;border-color:#3a5741!important}
+.app-dark .app-mobile-nav a:focus-visible{outline:2px solid #c3f26a;outline-offset:2px}
+.app-dark .arotech-modal{background:#182c20!important;color:#eaf6e8!important;border:1px solid #3d5744}
+@media(max-width:639px){
+  .app-h1{font-size:clamp(1.65rem,7vw,2.15rem);line-height:1.1;letter-spacing:-.055em}
+  .input-field{font-size:16px}
+  .card-sub{line-height:1.55}
+  .app-dark .app-mobile-nav{padding-bottom:calc(.5rem + env(safe-area-inset-bottom))}
+}
+@media(max-width:359px){
+  .app-mobile-nav a{font-size:9px}
+  .app-mobile-nav a svg{width:17px;height:17px}
+}
